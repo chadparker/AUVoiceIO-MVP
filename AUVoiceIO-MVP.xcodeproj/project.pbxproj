@@ -13,6 +13,8 @@
 		87FA8677273C92DF006F7BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FA8675273C92DF006F7BC0 /* Main.storyboard */; };
 		87FA8679273C92E1006F7BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87FA8678273C92E1006F7BC0 /* Assets.xcassets */; };
 		87FA867C273C92E1006F7BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FA867A273C92E1006F7BC0 /* LaunchScreen.storyboard */; };
+		87FA8684273D8D90006F7BC0 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8683273D8D90006F7BC0 /* Configurable.swift */; };
+		87FA8686273D8E06006F7BC0 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8685273D8E06006F7BC0 /* AudioEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		87FA8678273C92E1006F7BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87FA867B273C92E1006F7BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87FA867D273C92E1006F7BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87FA8683273D8D90006F7BC0 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		87FA8685273D8E06006F7BC0 /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 				87FA866F273C92DF006F7BC0 /* AppDelegate.swift */,
 				87FA8671273C92DF006F7BC0 /* SceneDelegate.swift */,
 				87FA8673273C92DF006F7BC0 /* ViewController.swift */,
+				87FA8685273D8E06006F7BC0 /* AudioEngine.swift */,
+				87FA8683273D8D90006F7BC0 /* Configurable.swift */,
 				87FA8675273C92DF006F7BC0 /* Main.storyboard */,
 				87FA8678273C92E1006F7BC0 /* Assets.xcassets */,
 				87FA867A273C92E1006F7BC0 /* LaunchScreen.storyboard */,
@@ -140,6 +146,8 @@
 			files = (
 				87FA8674273C92DF006F7BC0 /* ViewController.swift in Sources */,
 				87FA8670273C92DF006F7BC0 /* AppDelegate.swift in Sources */,
+				87FA8686273D8E06006F7BC0 /* AudioEngine.swift in Sources */,
+				87FA8684273D8D90006F7BC0 /* Configurable.swift in Sources */,
 				87FA8672273C92DF006F7BC0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
