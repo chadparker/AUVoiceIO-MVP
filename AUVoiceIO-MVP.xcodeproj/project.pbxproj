@@ -15,6 +15,10 @@
 		87FA867C273C92E1006F7BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87FA867A273C92E1006F7BC0 /* LaunchScreen.storyboard */; };
 		87FA8684273D8D90006F7BC0 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8683273D8D90006F7BC0 /* Configurable.swift */; };
 		87FA8686273D8E06006F7BC0 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FA8685273D8E06006F7BC0 /* AudioEngine.swift */; };
+		87FA868B273D9670006F7BC0 /* sampleVoice441kHz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87FA8687273D9670006F7BC0 /* sampleVoice441kHz.wav */; };
+		87FA868C273D9670006F7BC0 /* sampleVoice16kHz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87FA8688273D9670006F7BC0 /* sampleVoice16kHz.wav */; };
+		87FA868D273D9670006F7BC0 /* sampleVoice8kHz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87FA8689273D9670006F7BC0 /* sampleVoice8kHz.wav */; };
+		87FA868E273D9670006F7BC0 /* sampleVoice48kHz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 87FA868A273D9670006F7BC0 /* sampleVoice48kHz.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		87FA867D273C92E1006F7BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87FA8683273D8D90006F7BC0 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		87FA8685273D8E06006F7BC0 /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+		87FA8687273D9670006F7BC0 /* sampleVoice441kHz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sampleVoice441kHz.wav; sourceTree = "<group>"; };
+		87FA8688273D9670006F7BC0 /* sampleVoice16kHz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sampleVoice16kHz.wav; sourceTree = "<group>"; };
+		87FA8689273D9670006F7BC0 /* sampleVoice8kHz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sampleVoice8kHz.wav; sourceTree = "<group>"; };
+		87FA868A273D9670006F7BC0 /* sampleVoice48kHz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sampleVoice48kHz.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +73,10 @@
 				87FA8673273C92DF006F7BC0 /* ViewController.swift */,
 				87FA8685273D8E06006F7BC0 /* AudioEngine.swift */,
 				87FA8683273D8D90006F7BC0 /* Configurable.swift */,
+				87FA8689273D9670006F7BC0 /* sampleVoice8kHz.wav */,
+				87FA8688273D9670006F7BC0 /* sampleVoice16kHz.wav */,
+				87FA868A273D9670006F7BC0 /* sampleVoice48kHz.wav */,
+				87FA8687273D9670006F7BC0 /* sampleVoice441kHz.wav */,
 				87FA8675273C92DF006F7BC0 /* Main.storyboard */,
 				87FA8678273C92E1006F7BC0 /* Assets.xcassets */,
 				87FA867A273C92E1006F7BC0 /* LaunchScreen.storyboard */,
@@ -133,7 +145,11 @@
 			files = (
 				87FA867C273C92E1006F7BC0 /* LaunchScreen.storyboard in Resources */,
 				87FA8679273C92E1006F7BC0 /* Assets.xcassets in Resources */,
+				87FA868D273D9670006F7BC0 /* sampleVoice8kHz.wav in Resources */,
+				87FA868E273D9670006F7BC0 /* sampleVoice48kHz.wav in Resources */,
+				87FA868C273D9670006F7BC0 /* sampleVoice16kHz.wav in Resources */,
 				87FA8677273C92DF006F7BC0 /* Main.storyboard in Resources */,
+				87FA868B273D9670006F7BC0 /* sampleVoice441kHz.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
