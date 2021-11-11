@@ -28,23 +28,18 @@ class AudioEngine {
     init() throws {
         avAudioEngine.attach(recordedFilePlayer)
 
-        guard let speechURL = Bundle.main.url(forResource: "sampleVoice48kHz", withExtension: "wav") else { throw AudioEngineError.audioFileNotFound }
-        guard let tempSpeechBuffer = AudioEngine.getBuffer(fileURL: speechURL) else { throw AudioEngineError.bufferRetrieveError }
-        let speechBuffer = tempSpeechBuffer
-
-        voiceIOFormat = speechBuffer.format
-
-        print("Voice IO format: \(String(describing: voiceIOFormat))")
         guard
             let tempFileFormat = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
-            sampleRate: voiceIOFormat.sampleRate,
-            channels: voiceIOFormat.channelCount,
-            interleaved: true
+            sampleRate: 48000,
+            channels: 1,
+            interleaved: false
         ) else {
             throw AudioEngineError.fileFormatError
         }
         fileFormat = tempFileFormat
+        voiceIOFormat = tempFileFormat
+        print("File format: \(String(describing: fileFormat))")
 
         NotificationCenter.default.addObserver(
             self,
