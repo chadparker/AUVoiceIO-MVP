@@ -27,9 +27,8 @@ class AudioEngine {
 
     init() throws {
         avAudioEngine.attach(recordedFilePlayer)
-        print("Record file URL: \(recordedFileURL.absoluteString)")
 
-        guard let speechURL = Bundle.main.url(forResource: "sampleVoice8kHz", withExtension: "wav") else { throw AudioEngineError.audioFileNotFound }
+        guard let speechURL = Bundle.main.url(forResource: "sampleVoice48kHz", withExtension: "wav") else { throw AudioEngineError.audioFileNotFound }
         guard let tempSpeechBuffer = AudioEngine.getBuffer(fileURL: speechURL) else { throw AudioEngineError.bufferRetrieveError }
         let speechBuffer = tempSpeechBuffer
 
