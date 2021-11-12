@@ -3,6 +3,14 @@ import Foundation
 
 class AudioEngine {
 
+    // MARK: - Identifiers
+
+    enum AudioEngineError: Error {
+        case bufferRetrieveError
+        case fileFormatError
+        case audioFileNotFound
+    }
+
     // MARK: - Properties
 
     private var recordedFileURL = URL(
@@ -19,11 +27,11 @@ class AudioEngine {
     public private(set) var voiceIOFormat: AVAudioFormat
     public private(set) var isRecording = false
 
-    enum AudioEngineError: Error {
-        case bufferRetrieveError
-        case fileFormatError
-        case audioFileNotFound
+    var isPlaying: Bool {
+        return recordedFilePlayer.isPlaying
     }
+
+    // MARK: - Init
 
     init() throws {
         avAudioEngine.attach(recordedFilePlayer)
@@ -49,32 +57,13 @@ class AudioEngine {
         )
     }
 
+    // MARK: - Actions
+
     @objc func configChanged(_ notification: Notification) {
         checkEngineIsRunning()
     }
 
-    private static func getBuffer(fileURL: URL) -> AVAudioPCMBuffer? {
-        let file: AVAudioFile!
-        do {
-            try file = AVAudioFile(forReading: fileURL)
-        } catch {
-            print("Could not load file: \(error)")
-            return nil
-        }
-        file.framePosition = 0
-        let bufferCapacity = AVAudioFrameCount(file.length)
-                + AVAudioFrameCount(file.processingFormat.sampleRate * 0.1) // add 100ms to capacity
-        guard let buffer = AVAudioPCMBuffer(pcmFormat: file.processingFormat,
-                                            frameCapacity: bufferCapacity) else { return nil }
-        do {
-            try file.read(into: buffer)
-        } catch {
-            print("Could not load file into buffer: \(error)")
-            return nil
-        }
-        file.framePosition = 0
-        return buffer
-    }
+    // MARK: - Methods
 
     func setup() {
         let input = avAudioEngine.inputNode
@@ -145,20 +134,41 @@ class AudioEngine {
         recordedFilePlayer.stop()
     }
 
-    var isPlaying: Bool {
-        return recordedFilePlayer.isPlaying
-    }
-
     func togglePlaying() {
         if recordedFilePlayer.isPlaying {
             recordedFilePlayer.pause()
         } else {
             if isNewRecordingAvailable {
-                guard let recordedBuffer = AudioEngine.getBuffer(fileURL: recordedFileURL) else { return }
+                guard let recordedBuffer = getBuffer(fileURL: recordedFileURL) else { return }
                 recordedFilePlayer.scheduleBuffer(recordedBuffer, at: nil, options: .loops)
                 isNewRecordingAvailable = false
             }
             recordedFilePlayer.play()
         }
+    }
+
+    // MARK: - Private
+
+    private func getBuffer(fileURL: URL) -> AVAudioPCMBuffer? {
+        let file: AVAudioFile!
+        do {
+            try file = AVAudioFile(forReading: fileURL)
+        } catch {
+            print("Could not load file: \(error)")
+            return nil
+        }
+        file.framePosition = 0
+        let bufferCapacity = AVAudioFrameCount(file.length)
+                + AVAudioFrameCount(file.processingFormat.sampleRate * 0.1) // add 100ms to capacity
+        guard let buffer = AVAudioPCMBuffer(pcmFormat: file.processingFormat,
+                                            frameCapacity: bufferCapacity) else { return nil }
+        do {
+            try file.read(into: buffer)
+        } catch {
+            print("Could not load file into buffer: \(error)")
+            return nil
+        }
+        file.framePosition = 0
+        return buffer
     }
 }
