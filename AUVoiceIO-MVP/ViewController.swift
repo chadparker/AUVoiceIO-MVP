@@ -59,58 +59,6 @@ class ViewController: UIViewController {
         )
     }
 
-    // MARK: - Methods
-
-    private func setUpViews() {
-        let stackView = UIStackView(arrangedSubviews: [recordButton, playButton, micModeButton]).configure {
-            $0.distribution = .fillEqually
-        }
-
-        view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
-    }
-
-    private func setUpAudioEngine() {
-        do {
-            audioEngine = try AudioEngine()
-
-            setupAudioSession(sampleRate: audioEngine.voiceIOFormat.sampleRate)
-
-            audioEngine.setup()
-            audioEngine.start()
-        } catch {
-            fatalError("Could not set up audio engine: \(error)")
-        }
-    }
-
-    private func setupAudioSession(sampleRate: Double) {
-        let session = AVAudioSession.sharedInstance()
-
-        do {
-            try session.setCategory(.playAndRecord, options: .defaultToSpeaker)
-        } catch {
-            print("Could not set audio category: \(error.localizedDescription)")
-        }
-
-        do {
-            try session.setPreferredSampleRate(sampleRate)
-        } catch {
-            print("Could not set preferred sample rate: \(error.localizedDescription)")
-        }
-    }
-
-    func resetUIStates() {
-        recordButton.setTitle(.record, for: .normal)
-        recordButton.isEnabled = true
-        playButton.setTitle(.play, for: .normal)
-        playButton.isEnabled = false
-    }
-
     // MARK: - Actions
 
     @objc func handleInterruption(_ notification: Notification) {
@@ -216,5 +164,56 @@ class ViewController: UIViewController {
 
     @objc func micModePressed(_ sender: UIButton) {
         AVCaptureDevice.showSystemUserInterface(.microphoneModes)
+    }
+
+    // MARK: - Methods
+
+    private func setUpViews() {
+        let stackView = UIStackView(arrangedSubviews: [recordButton, playButton, micModeButton]).configure {
+            $0.distribution = .fillEqually
+        }
+        view.addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+
+    private func setUpAudioEngine() {
+        do {
+            audioEngine = try AudioEngine()
+
+            setupAudioSession(sampleRate: audioEngine.voiceIOFormat.sampleRate)
+
+            audioEngine.setup()
+            audioEngine.start()
+        } catch {
+            fatalError("Could not set up audio engine: \(error)")
+        }
+    }
+
+    private func setupAudioSession(sampleRate: Double) {
+        let session = AVAudioSession.sharedInstance()
+
+        do {
+            try session.setCategory(.playAndRecord, options: .defaultToSpeaker)
+        } catch {
+            print("Could not set audio category: \(error.localizedDescription)")
+        }
+
+        do {
+            try session.setPreferredSampleRate(sampleRate)
+        } catch {
+            print("Could not set preferred sample rate: \(error.localizedDescription)")
+        }
+    }
+
+    func resetUIStates() {
+        recordButton.setTitle(.record, for: .normal)
+        recordButton.isEnabled = true
+        playButton.setTitle(.play, for: .normal)
+        playButton.isEnabled = false
     }
 }
