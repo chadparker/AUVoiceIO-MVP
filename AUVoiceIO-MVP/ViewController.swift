@@ -5,6 +5,7 @@ private extension String {
     static let record = "Record"
     static let play = "Play"
     static let stop = "Stop"
+    static let micMode = "Mic Mode"
 }
 
 class ViewController: UIViewController {
@@ -19,6 +20,11 @@ class ViewController: UIViewController {
     private lazy var playButton = UIButton(type: .system).configure {
         $0.setTitle(.play, for: .normal)
         $0.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
+    }
+
+    private lazy var micModeButton = UIButton(type: .system).configure {
+        $0.setTitle(.micMode, for: .normal)
+        $0.addTarget(self, action: #selector(micModePressed), for: .touchUpInside)
     }
 
     // MARK: - Properties
@@ -56,7 +62,7 @@ class ViewController: UIViewController {
     // MARK: - Methods
 
     private func setUpViews() {
-        let stackView = UIStackView(arrangedSubviews: [recordButton, playButton]).configure {
+        let stackView = UIStackView(arrangedSubviews: [recordButton, playButton, micModeButton]).configure {
             $0.distribution = .fillEqually
         }
 
@@ -180,7 +186,7 @@ class ViewController: UIViewController {
         setUpAudioEngine()
     }
 
-    @IBAction func recordPressed(_ sender: UIButton) {
+    @objc func recordPressed(_ sender: UIButton) {
         print("Record button pressed.")
         audioEngine?.checkEngineIsRunning()
         audioEngine?.toggleRecording()
@@ -194,7 +200,7 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func playPressed(_ sender: UIButton) {
+    @objc func playPressed(_ sender: UIButton) {
         print("Play button pressed.")
         audioEngine?.checkEngineIsRunning()
         audioEngine?.togglePlaying()
@@ -206,5 +212,9 @@ class ViewController: UIViewController {
             playButton.setTitle(.play, for: .normal)
             recordButton.isEnabled = true
         }
+    }
+
+    @objc func micModePressed(_ sender: UIButton) {
+        AVCaptureDevice.showSystemUserInterface(.microphoneModes)
     }
 }
